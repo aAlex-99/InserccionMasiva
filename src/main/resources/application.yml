@@ -1,0 +1,60 @@
+---
+ajg:
+  info:
+    app:
+      encoding: '@project.build.sourceEncoding@'
+      java:
+        version: '@java.version@'
+      name: '@project.name@'
+      version: '@project.version@'
+
+server:
+  port: ${ENV_PORT:10443}
+
+management:
+  health:
+    db:
+      enabled: false
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /
+      path-mapping:
+        health: monitor
+
+spring:
+
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/PRUEBASDBA
+    username: DBAPRUEBAS
+    password: admin123
+    driver-class-name: oracle.jdbc.OracleDriver
+
+    # Configuración recomendada para Oracle + Hikari
+    hikari:
+      pool-name: HikariOraclePool
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 30000
+      connection-timeout: 20000
+      max-lifetime: 1800000
+
+  jdbc:
+    template:
+      fetch-size: 1000
+
+  mvc:
+    servlet:
+      path: /inserccionmasiva
+
+# Puedes usar esto si tu app lo necesita manualmente
+bdsql:
+  ip: localhost
+  puerto: 1521
+  nombrebdsql: PRUEBASDBA
+  usrbdsql: DBAPRUEBAS
+  pwbdsql: admin123
+
+
