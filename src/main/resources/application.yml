@@ -32,7 +32,6 @@ spring:
     password: admin123
     driver-class-name: oracle.jdbc.OracleDriver
 
-    # Configuración recomendada para Oracle + Hikari
     hikari:
       pool-name: HikariOraclePool
       maximum-pool-size: 10
@@ -49,7 +48,6 @@ spring:
     servlet:
       path: /inserccionmasiva
 
-# Puedes usar esto si tu app lo necesita manualmente
 bdsql:
   ip: localhost
   puerto: 1521
